@@ -1,0 +1,43 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "helm: INSTALL",
+            "type": "shell",
+            "command": "helm",
+            "args": [
+                "--kube-context",
+                "${input:CONTEXT}",
+                "-n",
+                "${input:NAMESPACE}",
+                "install",
+                "${input:RELEASE}",
+                "${input:CHART}"
+            ]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "NAMESPACE",
+            "description": "命名空间 (NAMESPACE)",
+            "type": "promptString"
+        },
+        {
+            "id": "RELEASE",
+            "description": "安装命名 (RELEASE)",
+            "type": "promptString"
+        },
+        {
+            "id": "CONTEXT",
+            "description": "目标集群上下文 (CONTEXT)",
+            "type": "promptString"
+        },
+        {
+            "id": "CHART",
+            "description": "模版 (CHART)",
+            "type": "promptString"
+        }
+    ]
+}

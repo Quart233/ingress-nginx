@@ -10,9 +10,6 @@
 .project
 .settings/**
 
-# visual studio code
-.vscode/*
-
 # Emacs save files
 *~
 \#*\#
